@@ -12,6 +12,7 @@ st.write(
 )
 st.sidebar.write("## Upload and download :gear:")
 
+col1, col2 = st.columns(2)
 
 # Download the fixed image
 def convert_image(img):
@@ -33,7 +34,6 @@ def fix_image(upload):
     st.sidebar.download_button("Download fixed image", convert_image(fixed), "fixed.png", "image/png")
 
 
-col1, col2 = st.columns(2)
 my_upload = st.sidebar.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
 
 if my_upload is not None:
