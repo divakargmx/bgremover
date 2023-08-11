@@ -1,7 +1,5 @@
-from io import BytesIO
-
 import streamlit as st
-from PIL import Image
+import cv2
 from rembg import remove
 
 st.set_page_config(layout="wide", page_title="Image Background Remover")
@@ -15,16 +13,11 @@ st.sidebar.write("## Upload and download :gear:")
 # Create the columns
 col1, col2 = st.columns(2)
 
-# Download the fixed image
-def convert_image(img):
-    buf = BytesIO()
-    img.save(buf, format="PNG")
-    byte_im = buf.getvalue()
-    return byte_im
 
-# Package the transform into a function
+ Package the transform into a function
 def fix_image(upload):
-    image = Image.open(upload)
+    image1 = Image.open(upload)
+    image= cv2.imread(image1)
     col1.write("Original Image :camera:")
     col1.image(image)
 
